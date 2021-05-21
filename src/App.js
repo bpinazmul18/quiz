@@ -16,8 +16,6 @@ function App() {
   }
 
   return <main>quiz app</main>;
-
-  return <h2>quiz starter</h2>;
 }
 
 export default App;
