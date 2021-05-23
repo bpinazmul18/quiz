@@ -25,6 +25,18 @@ const AppProvider = ({ children }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const nextQuestion = () => {
+    setIndex((oldIndex) => {
+      const index = oldIndex + 1;
+      if (index > questions.length - 1) {
+        //Open modal
+        return 0;
+      } else {
+        return index;
+      }
+    });
+  };
+
   const fetchQuestions = async (url) => {
     setLoading(true);
     setWaiting(false);
@@ -59,6 +71,7 @@ const AppProvider = ({ children }) => {
         correct,
         error,
         isModalOpen,
+        nextQuestion,
       }}
     >
       {children}
