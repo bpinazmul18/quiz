@@ -25,6 +25,13 @@ const AppProvider = ({ children }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const checkAnswer = (value) => {
+    if (value) {
+      setCorrect((oldValue) => oldValue + 1);
+    }
+    nextQuestion();
+  };
+
   const nextQuestion = () => {
     setIndex((oldIndex) => {
       const index = oldIndex + 1;
@@ -72,6 +79,7 @@ const AppProvider = ({ children }) => {
         error,
         isModalOpen,
         nextQuestion,
+        checkAnswer,
       }}
     >
       {children}
