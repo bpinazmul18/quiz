@@ -25,6 +25,12 @@ const AppProvider = ({ children }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [quiz, setQuiz] = useState({
+    amount: 10,
+    category: "sports",
+    difficulty: "easy",
+  });
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -74,9 +80,13 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchQuestions(tempURL);
-  }, []);
+  const handleChange = (e) => {
+    console.log(e);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <AppContext.Provider
@@ -91,6 +101,9 @@ const AppProvider = ({ children }) => {
         nextQuestion,
         checkAnswer,
         closeModal,
+        quiz,
+        handleChange,
+        handleSubmit,
       }}
     >
       {children}
