@@ -89,7 +89,13 @@ const AppProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(quiz);
+    const { amount, category, difficulty } = quiz;
+    const tempURL =
+      "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
+
+    const url = `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`;
+
+    fetchQuestions(url);
   };
 
   return (
